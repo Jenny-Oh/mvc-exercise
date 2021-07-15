@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="Utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mabtis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.repository.BoardRepository">
+    <select resultType="BoardDto" id="boardById">
+        SELECT * FROM board WHERE boardid = #{boardid}
+    </select>
+    <select resultType="BoardDto" id="findByName">
+        SELECT * FROM board WHERE boardname = #{boardname}
+    </select>
+</mapper>
