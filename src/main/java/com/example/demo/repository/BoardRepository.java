@@ -7,5 +7,5 @@ import org.apache.ibatis.annotations.Param;
 @Mapper
 public interface BoardRepository {
     public BoardDto findByName(@Param("boardname") String boardname);
-    public BoardDto boardById(@Param("boardid") Integer boardid);
+    public BoardDto findById(@Param("boardid") Integer boardid);
 }

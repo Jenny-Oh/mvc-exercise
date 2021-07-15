@@ -15,6 +15,7 @@ public class HelloWorldController {
 
     //private UserService userService;
     private BoardService boardService;
+    //private PostService postService;
     /*
     public HelloWorldController(UserService userService) {
         this.userService = userService;
@@ -43,8 +44,8 @@ public class HelloWorldController {
 
         //System.out.println(boardDto.getBoardname());
         //System.out.println(boardDto1.getBoardid());
-        model.addAttribute("boardname", boardDto.getBoardname());
-        model.addAttribute("boardid", boardDto1.getBoardid());
+        model.addAttribute("boardname", boardDto.getBoard_name());
+        model.addAttribute("boardid", boardDto1.getBoard_id());
 
         return "index";
     }

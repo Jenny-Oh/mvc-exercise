@@ -13,7 +13,7 @@ public class BoardService {
         this.boardRepository = boardRepository;
     }
     public BoardDto getNameById(Integer boardid){
-        return this.boardRepository.boardById(boardid);
+        return this.boardRepository.findById(boardid);
     }
 
     public BoardDto getIdByName(String name){
