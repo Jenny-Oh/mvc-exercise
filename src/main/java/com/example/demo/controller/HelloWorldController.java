@@ -1,7 +1,9 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.AdminDto;
 import com.example.demo.model.BoardDto;
 import com.example.demo.model.PostDto;
+import com.example.demo.service.AdminService;
 import com.example.demo.service.BoardService;
 import com.example.demo.service.PostService;
 import org.springframework.stereotype.Controller;
@@ -17,6 +19,7 @@ public class HelloWorldController {
     //private UserService userService;
     private BoardService boardService;
     private PostService postService;
+    private AdminService adminService;
     /*
     public HelloWorldController(UserService userService) {
         this.userService = userService;
@@ -24,10 +27,11 @@ public class HelloWorldController {
     }
 
      */
-    public HelloWorldController(BoardService boardService, PostService postService) {
+    public HelloWorldController(BoardService boardService, PostService postService, AdminService adminService) {
 
         this.boardService = boardService;
         this.postService = postService;
+        this.adminService = adminService;
     }
     @GetMapping("/")
     public String printHelloWorld(Model model){
@@ -43,8 +47,8 @@ public class HelloWorldController {
          */
 
         // BOARD
-        BoardDto boardDto = this.boardService.getNameById(0);
-        BoardDto boardDto1 = this.boardService.getIdByName("record");
+        BoardDto boardDto = this.boardService.getBoardById(0);
+        BoardDto boardDto1 = this.boardService.getBoardByName("record");
 
         //System.out.println(boardDto.getBoardname());
         //System.out.println(boardDto1.getBoardid());
@@ -64,6 +68,14 @@ public class HelloWorldController {
 
         model.addAttribute("postid",listofid);
         model.addAttribute("posttitle",listoftitle);
+
+
+        // ADMIN
+        AdminDto adminDto = this.adminService.getAdminbyId(1111);
+        AdminDto adminDto1 = this.adminService.getAdminbyName("jyo");
+
+        model.addAttribute("adminname",adminDto.getAdmin_name());
+        model.addAttribute("adminauth",adminDto1.getAdmin_auth());
         return "index";
     }
 }

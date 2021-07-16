@@ -12,11 +12,11 @@ public class BoardService {
     public BoardService(BoardRepository boardRepository){
         this.boardRepository = boardRepository;
     }
-    public BoardDto getNameById(Integer boardid){
+    public BoardDto getBoardById(Integer boardid){
         return this.boardRepository.findById(boardid);
     }
 
-    public BoardDto getIdByName(String name){
+    public BoardDto getBoardByName(String name){
         return this.boardRepository.findByName(name);
     }
 }

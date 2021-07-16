@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="Utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mabtis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.repository.AdminRepository">
+    <select resultType="AdminDto" id="findById">
+        SELECT * FROM admin WHERE admin_id = #{id}
+    </select>
+    <select resultType="AdminDto" id="findByName">
+        SELECT * FROM admin WHERE admin_name = #{name}
+    </select>
+</mapper>
