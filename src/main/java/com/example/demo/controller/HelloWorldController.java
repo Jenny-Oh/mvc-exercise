@@ -1,11 +1,9 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.BoardDto;
-import com.example.demo.model.UserDto;
-import com.example.demo.repository.UserRepository;
+import com.example.demo.model.PostDto;
 import com.example.demo.service.BoardService;
-import com.example.demo.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.demo.service.PostService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +13,7 @@ public class HelloWorldController {
 
     //private UserService userService;
     private BoardService boardService;
-    //private PostService postService;
+    private PostService postService;
     /*
     public HelloWorldController(UserService userService) {
         this.userService = userService;
@@ -23,9 +21,10 @@ public class HelloWorldController {
     }
 
      */
-    public HelloWorldController(BoardService boardService) {
+    public HelloWorldController(BoardService boardService, PostService postService) {
 
         this.boardService = boardService;
+        this.postService = postService;
     }
     @GetMapping("/")
     public String printHelloWorld(Model model){
@@ -39,6 +38,8 @@ public class HelloWorldController {
         model.addAttribute("username",userDto.username);
 
          */
+
+        // BOARD
         BoardDto boardDto = this.boardService.getNameById(0);
         BoardDto boardDto1 = this.boardService.getIdByName("record");
 
@@ -47,6 +48,11 @@ public class HelloWorldController {
         model.addAttribute("boardname", boardDto.getBoard_name());
         model.addAttribute("boardid", boardDto1.getBoard_id());
 
+        // POST
+        PostDto postDto = this.postService.getPostByTitle("hello");
+        PostDto postDto1 = this.postService.getPostByContext("hi");
+        model.addAttribute("postid",postDto.getPost_id());
+        model.addAttribute("posttitle",postDto.getPost_title());
         return "index";
     }
 }
