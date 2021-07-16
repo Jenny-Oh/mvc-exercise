@@ -2,9 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mabtis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.repository.PostRepository">
     <select resultType="PostDto" id="findByTitle">
-        SELECT * FROM post WHERE post_title LIKE CONCAT('%',#{post_title},'%')
+        SELECT * FROM post WHERE post_title LIKE concat('%',#{post_title},'%')
     </select>
     <select resultType="PostDto" id="findByContext">
-        SELECT * FROM post WHERE context = #{context}
+        SELECT * FROM post WHERE context LIKE concat('%', #{context},'%')
     </select>
 </mapper>

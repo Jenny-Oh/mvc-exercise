@@ -10,5 +10,5 @@ import java.util.List;
 @Mapper
 public interface PostRepository {
     public List<PostDto> findByTitle(@Param("post_title") String post_title);
-    public PostDto findByContext(@Param("context") String context);
+    public List<PostDto> findByContext(@Param("context") String context);
 }

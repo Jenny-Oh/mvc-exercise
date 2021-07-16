@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class PostService {
     public PostRepository postRepository;
-    public List<PostRepository> postRepositoryList;
+    //public List<PostRepository> postRepositoryList;
     public PostService(PostRepository postRepository){
         this.postRepository=postRepository;
     }
@@ -17,7 +17,7 @@ public class PostService {
         return this.postRepository.findByTitle(title);
 
     }
-    public PostDto getPostByContext(String context){
+    public List<PostDto> getPostByContext(String context){
         return this.postRepository.findByContext(context);
     }
 }

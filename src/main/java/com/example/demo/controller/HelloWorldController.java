@@ -53,16 +53,17 @@ public class HelloWorldController {
 
         // POST
         List<PostDto> postDtos = this.postService.getPostByTitle("hello");
-        PostDto postDto1 = this.postService.getPostByContext("hi");
+        List<PostDto> postDto1 = this.postService.getPostByContext("hi");
 
-        List<Integer> listofpost = new ArrayList<Integer>();
-        
+        List<Integer> listofid = new ArrayList<Integer>();
+        List<String> listoftitle = new ArrayList<String>();
         postDtos.stream().forEach(postDto ->
-                listofpost.add(postDto.getPost_id()));
+                listofid.add(postDto.getPost_id()));
+        postDto1.stream().forEach(postDto ->
+                listoftitle.add(postDto.getPost_title()));
 
-
-        model.addAttribute("postid",listofpost);
-        model.addAttribute("posttitle",postDto1.getPost_title());
+        model.addAttribute("postid",listofid);
+        model.addAttribute("posttitle",listoftitle);
         return "index";
     }
 }
