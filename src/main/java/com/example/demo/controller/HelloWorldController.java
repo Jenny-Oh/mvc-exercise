@@ -15,14 +15,7 @@ public class HelloWorldController {
 
     //private UserService userService;
     private BoardService boardService;
-    //private PostService postService;
-    /*
-    public HelloWorldController(UserService userService) {
-        this.userService = userService;
 
-    }
-
-     */
     public HelloWorldController(BoardService boardService) {
 
         this.boardService = boardService;
