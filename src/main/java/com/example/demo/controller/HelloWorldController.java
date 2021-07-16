@@ -8,6 +8,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class HelloWorldController {
 
@@ -49,10 +52,17 @@ public class HelloWorldController {
         model.addAttribute("boardid", boardDto1.getBoard_id());
 
         // POST
-        PostDto postDto = this.postService.getPostByTitle("hello");
+        List<PostDto> postDtos = this.postService.getPostByTitle("hello");
         PostDto postDto1 = this.postService.getPostByContext("hi");
-        model.addAttribute("postid",postDto.getPost_id());
-        model.addAttribute("posttitle",postDto.getPost_title());
+
+        List<Integer> listofpost = new ArrayList<Integer>();
+        
+        postDtos.stream().forEach(postDto ->
+                listofpost.add(postDto.getPost_id()));
+
+
+        model.addAttribute("postid",listofpost);
+        model.addAttribute("posttitle",postDto1.getPost_title());
         return "index";
     }
 }

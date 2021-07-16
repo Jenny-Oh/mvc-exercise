@@ -5,8 +5,10 @@ import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Mapper
 public interface PostRepository {
-    public PostDto findByTitle(@Param("post_title") String title);
+    public List<PostDto> findByTitle(@Param("post_title") String post_title);
     public PostDto findByContext(@Param("context") String context);
 }
